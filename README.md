@@ -18,7 +18,7 @@ The emails found in the commits
 ## Example usage
 
 ```yaml
-uses: envoy/email-validator-action@master
+uses: envoy/email-validator-action@v1
 with:
   allowed-domains: "envoy.com,signwithenvoy.com,envoy.co"
 ```
