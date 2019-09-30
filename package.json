@@ -1,0 +1,21 @@
+{
+  "name": "email-validator-action",
+  "version": "1.0.0",
+  "description": "This action validates the committer email from a list of allowed domains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "standard --fix"
+  },
+  "keywords": [],
+  "author": "Kamal Mahyuddin <kamal@envoy.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.1.0",
+    "@actions/exec": "^1.0.1",
+    "@actions/github": "^1.1.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}

@@ -1,0 +1,16 @@
+name: Email validator
+author: Kamal Mahyuddin
+description: Validates the email address of the git committer
+inputs:
+  allowed-domains:
+    description: A comma-separated list of allowed email domains
+    required: true
+outputs:
+  email:
+    description: The email address the git committer
+runs:
+  using: node12
+  main: index.js
+branding:
+  icon: mail
+  color: red
