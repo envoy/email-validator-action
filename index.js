@@ -18,7 +18,7 @@ async function main () {
       'git',
       [
         'log',
-        '--format={"author": "%ae", "committer": "%ce", "sha": "%h"}',
+        '--format={"author": "%ae", "committer": "%ce", "sha": "%h", "source": "%S"}',
         '--no-merges',
         '--source',
         `${sha}..`
