@@ -5,12 +5,17 @@ const os = require('os')
 
 async function main () {
   try {
-    const allowedDomains = core.getInput('allowed-domains')
+    const allowedDomains = core.getInput('allowed-domains', { required: true })
     const allDomains = allowedDomains.split(',').map(d => d.trim())
     const domains = [...new Set(allDomains)]
     core.debug(`Allowed domains: ${domains.join(', ')}`)
 
-    const { sha } = github.context.payload.pull_request.base
+    let ref = core.getInput('ref')
+    if (ref === '') {
+      ref = github.context.payload.pull_request.base
+    }
+    core.debug(`Ref: ${ref}`)
+
     let buffer = ''
     const options = {}
     options.listeners = { stdout: data => { buffer += data } }
@@ -20,7 +25,7 @@ async function main () {
         'log',
         '--format={"author": "%ae", "committer": "%ce", "sha": "%h"}',
         '--no-merges',
-        `${sha}..`
+        `${ref}..`
       ],
       options
     )
