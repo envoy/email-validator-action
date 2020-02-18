@@ -20,7 +20,7 @@ async function main () {
         'log',
         '--format={"author": "%ae", "committer": "%ce", "sha": "%h"}',
         '--no-merges',
-        `${headSha}..${baseSha}`,
+        `${headSha}...${baseSha}`,
       ],
       options
     )
