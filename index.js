@@ -10,7 +10,7 @@ async function main () {
     const domains = [...new Set(allDomains)]
     core.debug(`Allowed domains: ${domains.join(', ')}`)
 
-    const { sha } = github.context.payload.pull_request.base
+    const { base: { sha: baseSha }, head: { sha: headSha } } = github.context.payload.pull_request
     let buffer = ''
     const options = {}
     options.listeners = { stdout: data => { buffer += data } }
@@ -20,8 +20,7 @@ async function main () {
         'log',
         '--format={"author": "%ae", "committer": "%ce", "sha": "%h"}',
         '--no-merges',
-        `${sha}..`,
-        '--not master'
+        `${headSha}...${baseSha}`,
       ],
       options
     )
